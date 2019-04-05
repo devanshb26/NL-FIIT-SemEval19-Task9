@@ -1,6 +1,6 @@
 # Overview
 
-The repository contains source code of the models submitted by NL-FIIT team.
+The repository contains source code of the models submitted by NL-FIIT team as a part of SemEval 2019 Task 9 submission.
 
 ## Citation
 ```
@@ -14,9 +14,7 @@ The repository contains source code of the models submitted by NL-FIIT team.
 
 ## Prerequisites
 
-- elmo wight and options file in `elmo` directory
-- csv datafiles in `data` directory (see `parameters.py` file)
-- create `submissions` and `checkpoints` directories
+- csv datafiles in `data` directory (see `config.py` file)
 
 # Documentation
 
@@ -37,7 +35,7 @@ python3 evaluate_ensemble.py
 ## Docker container
 Commands for running docker container.
 ```
-nvidia-docker run -dt --runtime=nvidia --mount type=bind,source=/home/pecars/semeval,target=/workspace/src --name pytorch pytorch/pytorch:nightly-runtime-cuda9.2-cudnn7
+nvidia-docker run -dt --runtime=nvidia --mount type=bind,source=/home/pecars/semeval,target=/workspace/src --name pytorch pytorch/pytorch:latest
 docker exec -it pytorch /bin/bash
 ```
 
