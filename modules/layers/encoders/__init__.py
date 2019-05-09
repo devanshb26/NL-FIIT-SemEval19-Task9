@@ -1,1 +1,1 @@
-from .rnn_encoder import RNNEncoderr
+from .rnn_encoder import RNNEncoder
