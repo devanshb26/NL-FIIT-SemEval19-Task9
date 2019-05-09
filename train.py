@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 from models.rnn_classifier import RNNClassifier
 
-from modules.layers.embeddings import ELMo
+from modules.layers.embeddings.elmo import ELMo
 from modules.common.preprocessing import Preprocessing
 from modules.common.utils import class_weigths
 from modules.common.dataloading import load_data, collate_fn_cf
