@@ -5,7 +5,7 @@ from config import device, batch_size, model_params, embed_params, encoder_param
 
 from sklearn.metrics import accuracy_score, f1_score
 
-from models import RNNClassifier, TransformerClassifier
+from models.rnn_classifier import RNNClassifier, TransformerClassifier
 
 from modules.layers.embeddings import ELMo
 from modules.common.preprocessing import Preprocessing
