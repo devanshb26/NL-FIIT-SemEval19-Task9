@@ -1,2 +1,2 @@
-from .embeddings import elmo
-from .encoders import RNNEncoder
+from .embeddings.elmo import ELMo 
+from .encoders.rnn_encoder import RNNEncoder
