@@ -22,7 +22,7 @@ class ELMo(nn.Module):
         super(ELMo, self).__init__()
 
         self.dropout = nn.Dropout(p=embedding_dropout)
-        self.elmo = Elmo(options_file, weights_file, num_output_representations=1).to(device)
+        self.elmo = ElMo(options_file, weights_file, num_output_representations=1).to(device)
         self.embedding_dim = self.elmo.get_output_dim()
 
     def forward(self, sentences):
