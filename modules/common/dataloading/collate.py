@@ -12,6 +12,7 @@ def collate_fn_cf(data):
             print("LOOK HERE")
             print(type(i))
             print("|",i,"|")
+            print(type(labels))
             labels[ix] = 0
     labels = [int(str(i).strip()) for i in labels]
     print("labels", labels)
