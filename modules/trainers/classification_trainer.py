@@ -44,6 +44,7 @@ class ClassificationTrainer(Trainer):
 
         with torch.no_grad():
             for i_batch, batch in enumerate(tqdm(data), 1):
+                print(1)
                 outputs, targets, loss = self.__process_batch(batch)
 
                 outputs = F.softmax(outputs, dim=1)
