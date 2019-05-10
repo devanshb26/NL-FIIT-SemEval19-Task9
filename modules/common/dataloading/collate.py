@@ -4,6 +4,8 @@ import torch
 
 def collate_fn_cf(data):
     samples, labels, lengths = zip(*data)
+    print("labels", labels)
+    
     labels = torch.LongTensor(labels)
     lengths = torch.LongTensor(lengths)
 
