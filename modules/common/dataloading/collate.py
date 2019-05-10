@@ -5,13 +5,14 @@ import torch
 def collate_fn_cf(data):
     samples, labels, lengths = zip(*data)
     print(list(set([type(i) for i in labels])))
-    for i in labels:
+    for ix , i in enumerate(labels):
         try:
             a = int(i)
         except ValueError:
             print("LOOK HERE")
             print(type(i))
             print("|",i,"|")
+            labels[ix] = 0
     labels = [int(str(i).strip()) for i in labels]
     print("labels", labels)
     labels = torch.LongTensor(labels)
