@@ -9,8 +9,10 @@ def collate_fn_cf(data):
         try:
             a = int(i)
         except ValueError:
+            print("LOOK HERE")
             print(type(i))
-    labels = [int(i) for i in labels]
+            print("|",i,"|")
+    labels = [int(i.strip()) for i in labels]
     print("labels", labels)
     labels = torch.LongTensor(labels)
     lengths = torch.LongTensor(lengths)
