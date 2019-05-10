@@ -12,7 +12,7 @@ def collate_fn_cf(data):
             print("LOOK HERE")
             print(type(i))
             print("|",i,"|")
-    labels = [int(i.strip()) for i in labels]
+    labels = [int(str(i).strip()) for i in labels]
     print("labels", labels)
     labels = torch.LongTensor(labels)
     lengths = torch.LongTensor(lengths)
