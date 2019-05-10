@@ -23,7 +23,6 @@ class ClassificationTrainer(Trainer):
         self.model.train()
 
         for i_batch, batch in enumerate(tqdm(data), 1):
-            print(1)
             self.optimizer.zero_grad()
 
             outputs, targets, loss = self.__process_batch(batch)
