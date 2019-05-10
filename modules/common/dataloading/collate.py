@@ -9,6 +9,7 @@ def collate_fn_cf(data):
         try:
             a = int(i)
         except ValueError:
+            labels = list(labels)
             print("LOOK HERE")
             print(type(i))
             print("|",i,"|")
