@@ -4,11 +4,11 @@ import torch
 
 def collate_fn_cf(data):
     samples, labels, lengths = zip(*data)
-    labels = torch.LongTensor(labels)
-    lengths = torch.LongTensor(lengths)
+    labels = torch.cuda.LongTensor(labels)
+    lengths = torch.cuda.LongTensor(lengths)
 
     if isinstance(samples[0], np.ndarray):
-        samples = torch.LongTensor(samples)
+        samples = torch.cuda.LongTensor(samples)
     elif isinstance(samples[0], tuple):
         samples = samples
 
