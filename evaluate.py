@@ -12,7 +12,7 @@ from modules.common.dataloading import load_data, collate_fn_cf
 from modules.trainers import ClassificationTrainer
 from modules.datasets.classification_dataset import ClassificationDataset
 
-from torch.utils.data.submit import save_predictions, save_predictions_with_probabilities
+from utils.submit import save_predictions, save_predictions_with_probabilities
 
 print('Loading dataset...')
 preprocessing = Preprocessing()
