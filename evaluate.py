@@ -45,7 +45,7 @@ print(gold_labels)
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
-    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
+    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader)
 
     print('----------------------------------------------------Test results----------------------------------------------------')
     print('| Loss: {} | Acc: {}% |'.format(loss, accuracy_score(labels, predicted)))
