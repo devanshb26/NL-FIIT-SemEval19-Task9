@@ -55,15 +55,15 @@ paths = {
 
 ensemble_models = [
     'best_valid_f1_model',
-    'run_1',
-    'run_2',
-    'run_3',
-    'run_4',
-    'run_5',
-    'run_6',
-    'run_7',
-    'run_8'
-    'b_run_1',
-    'b_run_2',
-    'b_run_3'
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8'
+#     'b_run_1',
+#     'b_run_2',
+#     'b_run_3'
 ]
