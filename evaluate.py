@@ -41,7 +41,7 @@ trainer = ClassificationTrainer(None, criterion, optimizer, device)
 print('Evaluate...')
 
 gold_labels = test_set.labels.astype(int)
-
+print(gold_labels)
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
