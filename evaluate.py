@@ -39,13 +39,12 @@ optimizer = torch.optim.Adam(model.parameters())
 trainer = ClassificationTrainer(None, criterion, optimizer, device)
 
 print('Evaluate...')
-valid_set = valid_set[:521] + valid_set[522:]
-gold_labels = valid_set.labels.astype(int)
+gold_labels = test_set.labels.astype(int)
 print(gold_labels)
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
-    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader)
+    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
 
     print('----------------------------------------------------Test results----------------------------------------------------')
     print('| Loss: {} | Acc: {}% |'.format(loss, accuracy_score(labels, predicted)))
@@ -54,5 +53,5 @@ for model_name in ensemble_models:
     print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(labels, predicted)))
     print('--------------------------------------------------------------------------------------------------------------------')
 
-    save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=data.valid_data)
-    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=data.valid_data, labels=gold_labels, probabilities=model_predictions)
+    save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=data.test_data)
+    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=data.test_data, labels=gold_labels, probabilities=model_predictions)
