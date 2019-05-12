@@ -39,7 +39,7 @@ optimizer = torch.optim.Adam(model.parameters())
 trainer = ClassificationTrainer(None, criterion, optimizer, device)
 
 print('Evaluate...')
-print(valid_set.labels.index("label"))
+print(list(valid_set.labels).index("label"))
 gold_labels = valid_set.labels.astype(int)
 print(gold_labels)
 for model_name in ensemble_models:
