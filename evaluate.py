@@ -25,7 +25,7 @@ valid_set = ClassificationDataset(valid_data[:, x_column], valid_data[:, y_colum
 test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column], preprocessing=preprocessing.process_text)
 
 train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
-valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
+valid_loader = DataLoader(valid_set, batch_size, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 
 print('Creating model...')
@@ -54,5 +54,5 @@ for model_name in ensemble_models:
     print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(labels, predicted)))
     print('--------------------------------------------------------------------------------------------------------------------')
 
-    save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=data.test_data)
-    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=data.test_data, labels=gold_labels, probabilities=model_predictions)
+    save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=data.valid_data)
+    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=data.valid_data, labels=gold_labels, probabilities=model_predictions)
