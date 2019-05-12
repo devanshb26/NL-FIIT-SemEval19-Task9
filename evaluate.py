@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
-
+from modules.layers.embeddings.elmo import ELMo
 from config import device, batch_size, encoder_params, data_params, ensemble_models
 from models.rnn_classifier import RNNClassifier
 from modules.common.preprocessing import Preprocessing
