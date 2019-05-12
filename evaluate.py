@@ -31,6 +31,7 @@ test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
 weights = class_weigths(train_set.labels).to(device)
 criterion = torch.nn.CrossEntropyLoss(weight=weights)
+embeddings = ELMo(**embed_params)
 model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
 
 optimizer = torch.optim.Adam(model.parameters())
