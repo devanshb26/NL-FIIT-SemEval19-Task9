@@ -67,10 +67,7 @@ save_models = [
     'checkpoints/run_11',
     'checkpoints/run_12',
     'checkpoints/run_13',
-    'checkpoints/run_14',
-    'checkpoints/run_15',
-    'checkpoints/run_16',
-    'checkpoints/run_17'
+    'checkpoints/run_14'
 ]
 
 ensemble_models = [
@@ -88,9 +85,6 @@ ensemble_models = [
     'run_11',
     'run_12',
     'run_13',
-    'run_14',
-    'run_15',
-    'run_16',
-    'run_17'
+    'run_14'
     
 ]
