@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 
-from config import device, batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths
+from config import device, batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,ensemble_models
 
 from sklearn.metrics import accuracy_score, f1_score
 
@@ -55,8 +55,11 @@ for epoch in range(training_params['n_epochs']):
                   f1_score(labels, predicted, average='macro'), f1_score(labels, predicted, average='micro'), f1_score(labels, predicted)))
 
     macro_f1, binary_f1 = f1_score(labels, predicted, average='macro'), f1_score(labels, predicted)
-
+    i=0 
     if not best_binary_f1 or binary_f1 > best_binary_f1:
         print('saving binary')
         best_binary_f1 = binary_f1
         torch.save(model, paths['f1_score']['model_path'])
+    else:
+        i=i+1
+        torch.save(model,ensemble_models[i])
