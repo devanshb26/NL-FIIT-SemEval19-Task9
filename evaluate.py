@@ -49,6 +49,7 @@ for model_name in ensemble_models:
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
 
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
+    print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
     print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='macro'), precision_score(gold_labels, predicted, average='micro')))
     print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels, predicted, average='macro'), recall_score(gold_labels, predicted, average='micro')))
@@ -65,6 +66,7 @@ for model_name in ensemble_models:
     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
 
     print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
+    print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss_B, accuracy_score(labels_B, predicted_B)))
     print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels_B, predicted_B, average='macro'), precision_score(gold_labels_B, predicted_B, average='micro')))
     print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels_B, predicted_B, average='macro'), recall_score(gold_labels_B, predicted_B, average='micro')))
