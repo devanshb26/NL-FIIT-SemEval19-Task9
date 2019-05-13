@@ -46,7 +46,7 @@ for model_name in ensemble_models:
 
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
 
-    print('----------------------------------------------------Test results----------------------------------------------------')
+    print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
     print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
     print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='macro'), precision_score(gold_labels, predicted, average='micro')))
     print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels, predicted, average='macro'), recall_score(gold_labels, predicted, average='micro')))
