@@ -43,7 +43,7 @@ trainer = ClassificationTrainer(model, criterion, optimizer, device)
 print('Training...')
 best_binary_f1 = None
 gold_labels = test_set.labels.astype(int)
-
+i=0
 for epoch in range(training_params['n_epochs']):
 
     train_loss = trainer.train_model(train_loader)
@@ -55,7 +55,7 @@ for epoch in range(training_params['n_epochs']):
                   f1_score(labels, predicted, average='macro'), f1_score(labels, predicted, average='micro'), f1_score(labels, predicted)))
 
     macro_f1, binary_f1 = f1_score(labels, predicted, average='macro'), f1_score(labels, predicted)
-    i=0 
+     
     if not best_binary_f1 or binary_f1 > best_binary_f1:
         print('saving binary')
         best_binary_f1 = binary_f1
