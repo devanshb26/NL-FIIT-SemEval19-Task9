@@ -71,5 +71,5 @@ for model_name in ensemble_models:
     print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels_B, predicted_B, average='macro'), f1_score(gold_labels_B, predicted_B, average='micro'), f1_score(labels_B, predicted_B)))
     print('--------------------------------------------------------------------------------------------------------------------')
 
-    save_predictions(name='submissions_B/' + model_name, predictions=predicted_B, original_data=test_data_B)
-    save_predictions_with_probabilities(name='submissions_B/' + model_name + '_full', predictions=predicted_B, original_data=test_data_B, labels=gold_labels_B, probabilities=model_predictions)
+    save_predictions(name='submissions/' + model_name, predictions=predicted_B, original_data=test_data_B)
+    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted_B, original_data=test_data_B, labels=gold_labels_B, probabilities=model_predictions)
