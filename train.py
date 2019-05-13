@@ -64,4 +64,4 @@ for epoch in range(training_params['n_epochs']):
         
         torch.save(model,save_models[i])
         i=i+1
-        print(i+' saved')
+        print(i)
