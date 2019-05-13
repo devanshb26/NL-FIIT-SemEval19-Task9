@@ -82,7 +82,7 @@ ensemble_models = [
 #     'run_8',
 #     'run_9',
 #     'run_10',
-#     'run_11',
+    'run_11',
 #     'run_12',
     'run_13',
     'run_14'
