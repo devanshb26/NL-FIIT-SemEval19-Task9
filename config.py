@@ -71,19 +71,19 @@ save_models = [
 ]
 
 ensemble_models = [
-    'best_valid_f1_model',
-    'run_1',
-    'run_2',
-    'run_3',
-    'run_4',
-    'run_5',
-    'run_6',
-    'run_7',
-    'run_8',
-    'run_9',
-    'run_10',
-    'run_11',
-    'run_12',
+#     'best_valid_f1_model',
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8',
+#     'run_9',
+#     'run_10',
+#     'run_11',
+#     'run_12',
     'run_13',
     'run_14'
     
