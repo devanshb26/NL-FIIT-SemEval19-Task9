@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 
-from config import device, batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,ensemble_models
+from config import device, batch_size,save_models, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,ensemble_models
 
 from sklearn.metrics import accuracy_score, f1_score
 
@@ -62,4 +62,5 @@ for epoch in range(training_params['n_epochs']):
         torch.save(model, paths['f1_score']['model_path'])
     else:
         i=i+1
-        torch.save(model,ensemble_models[i])
+        torch.save(model,save_models[i])
+        print('saved')
