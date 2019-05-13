@@ -8,6 +8,7 @@ data_params = {
     'train_file': 'data/subtask-a/V1.4_Training.csv',
     'validation_file': 'data/subtask-a/SubtaskA_Trial_Test_Labeled.csv',
     'test_file': 'data/subtask-a/SubtaskA_EvaluationData_labeled.csv',
+    'test_file_b':'data/subtask-a/SubtaskB_EvaluationData_labeled.csv',
     # 'validation_file': 'data/subtask-b/SubtaskB_Trial_Test_Labeled.csv',
     # 'test_file': 'data/subtask-b/SubtaskB_EvaluationData_labeled.csv',
     'x_column': 1,
