@@ -54,30 +54,30 @@ paths = {
 
 }
 save_models = [
-#     'checkpoints/run_1',
-#     'checkpoints/run_2',
-#     'checkpoints/run_3',
-#     'checkpoints/run_4',
-#     'checkpoints/run_5',
-#     'checkpoints/run_6',
-#     'checkpoints/run_7',
-#     'checkpoints/run_8'
-#     'checkpoints/b_run_1',
-#     'checkpoints/b_run_2',
-#     'checkpoints/b_run_3'
+    'checkpoints/run_1',
+    'checkpoints/run_2',
+    'checkpoints/run_3',
+    'checkpoints/run_4',
+    'checkpoints/run_5',
+    'checkpoints/run_6',
+    'checkpoints/run_7',
+    'checkpoints/run_8',
+    'checkpoints/b_run_1',
+    'checkpoints/b_run_2',
+    'checkpoints/b_run_3'
 ]
 
 ensemble_models = [
-    'best_valid_f1_model'
-#     'run_1',
-#     'run_2',
-#     'run_3',
-#     'run_4',
-#     'run_5',
-#     'run_6',
-#     'run_7',
-#     'run_8'
-#     'b_run_1',
-#     'b_run_2',
-#     'b_run_3'
+    'best_valid_f1_model',
+    'run_1',
+    'run_2',
+    'run_3',
+    'run_4',
+    'run_5',
+    'run_6',
+    'run_7',
+    'run_8',
+    'b_run_1',
+    'b_run_2',
+    'b_run_3'
 ]
