@@ -60,4 +60,8 @@ for epoch in range(training_params['n_epochs']):
         print('saving binary')
         best_binary_f1 = binary_f1
         torch.save(model, paths['f1_score']['model_path'])
-    
+    else:
+        torch.save(model,save_models[i])
+        i=i+1
+        print(i)
+
