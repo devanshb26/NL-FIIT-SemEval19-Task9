@@ -71,7 +71,7 @@ save_models = [
 ]
 
 ensemble_models = [
-#     'best_valid_f1_model',
+    'best_valid_f1_model',
 #     'run_1',
 #     'run_2',
 #     'run_3',
