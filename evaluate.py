@@ -4,7 +4,7 @@ import numpy as np
 
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score,confusion_matrix as cm
 from modules.layers.embeddings.elmo import ELMo
-from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths
+from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,save_csv
 from models.rnn_classifier import RNNClassifier
 from modules.common.preprocessing import Preprocessing
 from modules.common.utils import class_weigths
@@ -44,12 +44,14 @@ print('Evaluate...')
 gold_labels = test_set.labels.astype(int)
 print(gold_labels)
 import pandas as pd
+i=0
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
    
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
     df=pd.DataFrame({'predictions':predicted,'labels':labels}) 
-    df.to_csv('abc.csv',index=False)
+    torch.save(df,save_csv[i])
+    i=i+1
     print(f1_score(labels, predicted))
     print(cm(labels,predicted))
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
