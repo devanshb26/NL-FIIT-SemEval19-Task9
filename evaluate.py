@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 import numpy as np
 
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score,confusion_matrix as cm
 from modules.layers.embeddings.elmo import ELMo
 from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths
 from models.rnn_classifier import RNNClassifier
@@ -48,6 +48,7 @@ for model_name in ensemble_models:
 
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
     print(f1_score(labels, predicted))
+    print(cm(labels,predicted))
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
     print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
@@ -66,6 +67,7 @@ for model_name in ensemble_models:
 
     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
     print(f1_score(labels_B, predicted_B))
+    print(cm(labels_B,predicted_B))
     print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
     print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss_B, accuracy_score(labels_B, predicted_B)))
