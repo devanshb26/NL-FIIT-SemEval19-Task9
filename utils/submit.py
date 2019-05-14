@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def save_predictions(name, predictions, original_data):
-    original_data['predictions'] = predictions
+    original_data[ : ,2] = predictions
     dataframe = pd.DataFrame(data=original_data)
     dataframe.to_csv(name + '.csv',sep=',', header=False, index=False, quoting=2)
 
