@@ -47,7 +47,7 @@ for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
-
+    f1_score(labels, predicted)
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
     print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
@@ -65,7 +65,7 @@ for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
-
+    f1_score(labels_B, predicted_B)
     print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
     print(model_name)
     print('| Loss: {} | Acc: {}% |'.format(test_loss_B, accuracy_score(labels_B, predicted_B)))
