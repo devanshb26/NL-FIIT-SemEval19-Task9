@@ -44,13 +44,14 @@ print('Evaluate...')
 gold_labels = test_set.labels.astype(int)
 print(gold_labels)
 import pandas as pd
+import csv
 i=0
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
    
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
     df=pd.DataFrame({'predictions':predicted,'labels':labels}) 
-    torch.save(df,save_csv[i])
+    df.to_csv(save_csv[i])
     i=i+1
     print(df.head())
     print(f1_score(labels, predicted))
