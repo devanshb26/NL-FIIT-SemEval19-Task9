@@ -52,6 +52,7 @@ for model_name in ensemble_models:
     df=pd.DataFrame({'predictions':predicted,'labels':labels}) 
     torch.save(df,save_csv[i])
     i=i+1
+    print(df.head())
     print(f1_score(labels, predicted))
     print(cm(labels,predicted))
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
