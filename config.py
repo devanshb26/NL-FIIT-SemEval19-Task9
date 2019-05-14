@@ -71,7 +71,7 @@ save_models = [
 ]
 
 save_csv = [
-    'checkpoints/bestlp',
+    'checkpoints/bestlp.csv',
 #     'run_1',
 #     'run_2',
 #     'run_3',
@@ -82,10 +82,10 @@ save_csv = [
 #     'run_8',
 #     'run_9',
 #     'run_10',
-    'checkpoints/run_11lp',
+    'checkpoints/run_11lp.csv',
 #     'run_12',
-    'checkpoints/run_13lp',
-    'checkpoints/run_14lp'
+    'checkpoints/run_13lp.csv',
+    'checkpoints/run_14lp.csv'
     
 ]
 
