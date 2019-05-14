@@ -70,6 +70,24 @@ save_models = [
     'checkpoints/run_14'
 ]
 
+save_csv = [
+    'best_csv',
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8',
+#     'run_9',
+#     'run_10',
+    'run_11_csv',
+#     'run_12',
+    'run_13_csv',
+    'run_14_csv'
+    
+]
 
 ensemble_models = [
     'best_valid_f1_model',
