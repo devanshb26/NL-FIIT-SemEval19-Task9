@@ -70,41 +70,6 @@ save_models = [
     'checkpoints/run_14'
 ]
 
-save_models_A = [
-      'checkpoints/bestcsv_ac',
-#     'checkpoints/run_1_a',
-#     'checkpoints/run_2_a',
-#     'checkpoints/run_3_a',
-#     'checkpoints/run_4',
-#     'checkpoints/run_5',
-#     'checkpoints/run_6',
-#     'checkpoints/run_7',
-#     'checkpoints/run_8',
-#     'checkpoints/run_9',
-#     'checkpoints/run_10',
-    'checkpoints/run_11_ac',
-#     'checkpoints/run_12',
-    'checkpoints/run_13_ac',
-    'checkpoints/run_14_ac'
-]
-
-save_csv_B = [
-    'checkpoints/best_bc'
-#     'checkpoints/run_1_bc',
-#     'checkpoints/run_2_bc',
-#     'checkpoints/run_3_bc',
-#     'checkpoints/run_4_bc',
-#     'checkpoints/run_5_bc',
-#     'checkpoints/run_6_bc',
-#     'checkpoints/run_7_bc',
-#     'checkpoints/run_8_bc',
-#     'checkpoints/run_9_bc',
-#     'checkpoints/run_10_bc',
-    'checkpoints/run_11_bc',
-#     'checkpoints/run_12_bc',
-    'checkpoints/run_13_bc',
-    'checkpoints/run_14_bc'
-]
 
 ensemble_models = [
     'best_valid_f1_model',
