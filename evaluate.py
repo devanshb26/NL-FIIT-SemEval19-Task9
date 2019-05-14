@@ -43,11 +43,13 @@ trainer = ClassificationTrainer(None, criterion, optimizer, device)
 print('Evaluate...')
 gold_labels = test_set.labels.astype(int)
 print(gold_labels)
-
+import pandas as pd
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
-
+   
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
+    df=pd.DataFrame({'predictions':predicted,'labels':labels}) 
+    df.to_csv('abc.csv',index=False)
     print(f1_score(labels, predicted))
     print(cm(labels,predicted))
     print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
@@ -70,6 +72,7 @@ for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
+#     df=pd.DataFrame({'predictions':predicted,'labels':labels})
     print(f1_score(labels_B, predicted_B))
     print(cm(labels_B,predicted_B))
     print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
