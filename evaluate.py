@@ -4,7 +4,7 @@ import numpy as np
 
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score,confusion_matrix as cm
 from modules.layers.embeddings.elmo import ELMo
-from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,save_csv_A,save_csv_B
+from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths
 from models.rnn_classifier import RNNClassifier
 from modules.common.preprocessing import Preprocessing
 from modules.common.utils import class_weigths
@@ -39,11 +39,11 @@ model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
 optimizer = torch.optim.Adam(model.parameters())
 
 trainer = ClassificationTrainer(None, criterion, optimizer, device)
-import pandas as pd
+
 print('Evaluate...')
 gold_labels = test_set.labels.astype(int)
 print(gold_labels)
-i=0
+
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
@@ -59,15 +59,13 @@ for model_name in ensemble_models:
     print('--------------------------------------------------------------------------------------------------------------------')
     #save_predictions(name='submissions/' + model_name + 'predictions', predictions=predicted)
     
-    df=pd.DataFrame({'predicted':predicted,'labels':labels})
-    torch.save(df,save_csv_A[i])
-    i=i+1
+    
     save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=test_data)
     save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=model_predictions)
     
 gold_labels_B = test_set_B.labels.astype(int)
 print(gold_labels_B)
-i=0
+
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
@@ -82,8 +80,6 @@ for model_name in ensemble_models:
     print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels_B, predicted_B, average='macro'), f1_score(gold_labels_B, predicted_B, average='micro'), f1_score(labels_B, predicted_B)))
     print('--------------------------------------------------------------------------------------------------------------------')
     #save_predictions(name='submissions/' + model_name + 'predictions', predictions=predicted_B)
-    save_predictions(name='submissions/' + model_name, predictions=predicted_B, original_data=test_data_B)
+    save_predictions(name='submissions/' + model_name +'_B', predictions=predicted_B, original_data=test_data_B)
     save_predictions_with_probabilities(name='submissions/' + model_name + '_full_B', predictions=predicted_B, original_data=test_data_B, labels=gold_labels_B, probabilities=model_predictions_B)
-    df=pd.DataFrame({'predicted':predicted_B,'labels':labels_B})
-    torch.save(df,save_csv_B[i])
-    i=i+1
+    
