@@ -89,6 +89,25 @@ save_csv = [
     
 ]
 
+save_csv_B = [
+    'checkpoints/bestlp_B.csv',
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8',
+#     'run_9',
+#     'run_10',
+    'checkpoints/run_11lp_B.csv',
+#     'run_12',
+    'checkpoints/run_13lp_B.csv',
+    'checkpoints/run_14lp_B.csv'
+    
+]
+
 ensemble_models = [
     'best_valid_f1_model',
 #     'run_1',
