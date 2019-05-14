@@ -50,7 +50,7 @@ for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
    
     test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
-    df=pd.DataFrame({'reviews':test_data,'predictions':predicted,'labels':labels}) 
+    df=pd.DataFrame({'reviews':test_data[ : ,1],'predictions':predicted,'labels':labels}) 
     df.to_csv(save_csv[i])
     i=i+1
     print(df.head())
@@ -77,7 +77,7 @@ for model_name in ensemble_models:
 
     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
 #     df=pd.DataFrame({'predictions':predicted,'labels':labels})
-    df=pd.DataFrame({'reviews':test_data_B,'predictions':predicted_B,'labels':labels_B}) 
+    df=pd.DataFrame({'reviews':test_data_B[ : ,1],'predictions':predicted_B,'labels':labels_B}) 
     df.to_csv(save_csv_B[i])
     i=i+1
     print(f1_score(labels_B, predicted_B))
