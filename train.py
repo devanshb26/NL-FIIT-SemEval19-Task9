@@ -17,7 +17,7 @@ from modules.datasets.classification_dataset import ClassificationDataset
 print('Loading dataset...')
 preprocessing = Preprocessing()
 
-train_data, valid_data,test_data,test_data_B,valid_data_B  = load_data(**data_params)
+train_data, valid_data,valid_data_B,test_data,test_data_B = load_data(**data_params)
 x_column, y_column = data_params['x_column'], data_params['y_column']
 
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
