@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def load_data(train_file, validation_file, test_file,test_file_B, sep=',', header=0, **kwargs):
+def load_data(train_file, validation_file, test_file,test_file_B,validation_file_B, sep=',', header=0, **kwargs):
     train = pd.read_csv(train_file, sep=sep, header=header, quoting=1).sample(frac=1).values
     valid = pd.read_csv(validation_file, sep=sep, header=header, quoting=1).sample(frac=1).values
     valid_B = pd.read_csv(validation_file_B, sep=sep, header=header, quoting=1).sample(frac=1).values
