@@ -17,11 +17,12 @@ from utils.submit import save_predictions, save_predictions_with_probabilities
 print('Loading dataset...')
 preprocessing = Preprocessing()
 
-train_data, valid_data,valid_B, test_data,test_data_B = load_data(**data_params)
+train_data, valid_data, test_data,test_data_B,valid_B = load_data(**data_params)
 x_column, y_column = data_params['x_column'], data_params['y_column']
 
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
 valid_set = ClassificationDataset(valid_data[:, x_column], valid_data[:, y_column], preprocessing=preprocessing.process_text)
+valid_set_B = ClassificationDataset(valid_B[:, x_column], valid_B[:, y_column], preprocessing=preprocessing.process_text)
 test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column], preprocessing=preprocessing.process_text)
 test_set_B = ClassificationDataset(test_data_B[:, x_column], test_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
@@ -29,6 +30,7 @@ train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collat
 valid_loader = DataLoader(valid_set, batch_size, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
+valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 
 print('Creating model...')
 weights = class_weigths(train_set.labels).to(device)
