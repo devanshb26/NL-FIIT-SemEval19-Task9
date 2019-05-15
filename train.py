@@ -23,6 +23,7 @@ x_column, y_column = data_params['x_column'], data_params['y_column']
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
 valid_set = ClassificationDataset(valid_data[:, x_column], valid_data[:, y_column], preprocessing=preprocessing.process_text)
 test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column], preprocessing=preprocessing.process_text)
+test_set_B = ClassificationDataset(test_data_B[:, x_column], test_data_B[:, y_column], preprocessing=preprocessing.process_text)
 valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
 train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
