@@ -51,7 +51,7 @@ for epoch in range(training_params['n_epochs']):
 
     train_loss = trainer.train_model(train_loader)
 
-    valid_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
+    valid_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader_B)
 
     print('| Epoch: {} | Train Loss: {:2.5f} | Val. Loss: {:2.5f} | Val. Acc: {:2.5f} | Val. Macro F1: {:2.5f} | Val. Micro F1: {:2.5f} | Val. Binary F1: {:2.5f} |'
           .format(epoch + 1, train_loss, valid_loss, accuracy_score(labels, predicted),
@@ -63,8 +63,8 @@ for epoch in range(training_params['n_epochs']):
         print('saving binary')
         best_binary_f1 = binary_f1
         torch.save(model, paths['f1_score']['model_path'])
-#     else:
-#         torch.save(model,save_models[i])
-#         i=i+1
-#         print(i)
+    else:
+        torch.save(model,save_models[i])
+        i=i+1
+        print(i)
 
