@@ -49,7 +49,7 @@ i=0
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
    
-    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader)
+    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader)
     df=pd.DataFrame({'reviews':test_data[ : ,1],'predictions':predicted,'labels':labels}) 
     df.to_csv(save_csv[i])
     i=i+1
