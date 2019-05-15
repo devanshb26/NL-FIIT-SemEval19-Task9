@@ -17,17 +17,18 @@ from modules.datasets.classification_dataset import ClassificationDataset
 print('Loading dataset...')
 preprocessing = Preprocessing()
 
-train_data, valid_data, test_data,test_data_B = load_data(**data_params)
+train_data, valid_data, test_data,test_data_B,valid_data_B = load_data(**data_params)
 x_column, y_column = data_params['x_column'], data_params['y_column']
 
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
 valid_set = ClassificationDataset(valid_data[:, x_column], valid_data[:, y_column], preprocessing=preprocessing.process_text)
 test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column], preprocessing=preprocessing.process_text)
+valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
 train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
-
+valid_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
 
 embeddings = ELMo(**embed_params)
@@ -48,7 +49,7 @@ for epoch in range(training_params['n_epochs']):
 
     train_loss = trainer.train_model(train_loader)
 
-    valid_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader)
+    valid_loss, predicted, model_predictions, labels = trainer.evaluate_model(valid_loader_B)
 
     print('| Epoch: {} | Train Loss: {:2.5f} | Val. Loss: {:2.5f} | Val. Acc: {:2.5f} | Val. Macro F1: {:2.5f} | Val. Micro F1: {:2.5f} | Val. Binary F1: {:2.5f} |'
           .format(epoch + 1, train_loss, valid_loss, accuracy_score(labels, predicted),
