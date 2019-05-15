@@ -817,3 +817,9 @@
 6291,"In Silverlight it was once possible to register an app as an option for the edit picker in the photo hub (https://msdn.microsoft.com/en-us/library/windows/apps/jj662932(v=vs.105).aspx).",0
 6292,"This is not possbile for UAP apps.",0
 6294,"This option is already present in the desktop variant of the app but missing in the mobile app.",0
+6299,"The equivalent WinRT API - MessageDialog - provides no apparent means to copy the message to clipboard - no response to right click no response to Ctrl+C.",0
+6305,"Thanks for your attention.",0
+6309,"I've got a Win8 app in the store.",0
+6310,"I want to beta test a win10 version of it.",0
+6311,"So I set the app to Hide & Stop selling",0
+6312,"I then submit the win10 version and get some promo codes",0
