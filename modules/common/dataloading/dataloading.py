@@ -8,4 +8,4 @@ def load_data(train_file, validation_file, test_file,test_file_B,validation_file
     test = pd.read_csv(test_file, sep=sep, header=header, quoting=1).values
     test_B = pd.read_csv(test_file_B, sep=sep, header=header, quoting=1).values
 
-    return train,valid,test,test_B,valid_B
+    return train,valid,valid_B,test,test_B
