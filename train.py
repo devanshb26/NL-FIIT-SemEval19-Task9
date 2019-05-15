@@ -28,7 +28,7 @@ valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y
 train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
-valid_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
+valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
 
 embeddings = ELMo(**embed_params)
