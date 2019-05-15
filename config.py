@@ -84,9 +84,9 @@ save_csv = [
 #     'run_9',
 #     'run_10',
 #     'checkpoints/run_11lp.csv',
-# #     'run_12',
-#     'checkpoints/run_13lp.csv',
-#     'checkpoints/run_14lp.csv'
+#     'run_12',
+    'checkpoints/run_13lp.csv',
+    'checkpoints/run_14lp.csv'
     
 ]
 
@@ -122,8 +122,8 @@ ensemble_models = [
 #     'run_9',
 #     'run_10',
 #     'run_11',
-# #     'run_12',
-#     'run_13',
-#     'run_14'
+#     'run_12',
+    'run_13',
+    'run_14'
     
 ]
