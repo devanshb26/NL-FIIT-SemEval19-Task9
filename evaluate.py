@@ -17,7 +17,7 @@ from utils.submit import save_predictions, save_predictions_with_probabilities
 print('Loading dataset...')
 preprocessing = Preprocessing()
 
-train_data, valid_data, test_data,test_data_B,valid_B = load_data(**data_params)
+train_data, valid_data,valid_B, test_data,test_data_B = load_data(**data_params)
 x_column, y_column = data_params['x_column'], data_params['y_column']
 
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
