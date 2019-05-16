@@ -68,7 +68,13 @@ save_models = [
     'checkpoints/run_11',
     'checkpoints/run_12',
     'checkpoints/run_13',
-    'checkpoints/run_14'
+    'checkpoints/run_14',
+    'checkpoints/run_15',
+    'checkpoints/run_16',
+    'checkpoints/run_17',
+    'checkpoints/run_18',
+    'checkpoints/run_19',
+    'checkpoints/run_20'
 ]
 
 save_csv = [
