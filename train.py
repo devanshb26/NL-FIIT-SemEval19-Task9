@@ -45,7 +45,14 @@ valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y
 # weights = make_weights_for_balanced_classes(train_set, 2)
 # weights = torch.DoubleTensor(weights)                                       
 # sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
-
+import pandas as pd
+import csv
+df_train=pd.DataFrame(train_set)
+df_test=pd.DataFrame(test_set)
+df_valid=pd.DataFrame(valid_set)
+df_train.to_csv('checkpoints/train.csv')
+df_test.to_csv('checkpoints/test.csv')
+df_valid.to_csv('checkpoints/valid.csv')
 train_loader = DataLoader(train_set,batch_size,shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
@@ -79,11 +86,11 @@ for epoch in range(training_params['n_epochs']):
 
     macro_f1, binary_f1 = f1_score(labels, predicted, average='macro'), f1_score(labels, predicted)
      
-    if not best_binary_f1 or binary_f1 > best_binary_f1:
-        print('saving binary')
-        best_binary_f1 = binary_f1
-        torch.save(model, paths['f1_score']['model_path'])
-    else:
+#     if not best_binary_f1 or binary_f1 > best_binary_f1:
+#         print('saving binary')
+#         best_binary_f1 = binary_f1
+#         torch.save(model, paths['f1_score']['model_path'])
+#     else:
         torch.save(model,save_models[i])
         i=i+1
         print(i)
