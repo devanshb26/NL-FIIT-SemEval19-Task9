@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from config import device, batch_size,save_models, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,ensemble_models
-from sampler import ImbalancedDatasetSampler
+
 from sklearn.metrics import accuracy_score, f1_score
 
 from models.rnn_classifier import RNNClassifier
