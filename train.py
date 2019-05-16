@@ -47,7 +47,7 @@ valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y
 # sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
 import pandas as pd
 import csv
-print(test_set)
+print(test_set.data)
 # df_train=pd.DataFrame(train_set)
 # df_test=pd.DataFrame(test_set)
 # df_valid=pd.DataFrame(valid_set)
