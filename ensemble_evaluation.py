@@ -64,7 +64,7 @@ save_predictions(name='submissions/ensemble', predictions=predicted, original_da
 save_predictions_with_probabilities(name='submissions/ensemble_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
 
 print('----------------------------------------------------Test results----------------------------------------------------')
-print('| Loss: {} | Acc: {}% |'.format(loss, accuracy_score(labels, predicted)))
+print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
 print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='macro'), precision_score(gold_labels, predicted, average='micro')))
 print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels, predicted, average='macro'), recall_score(gold_labels, predicted, average='micro')))
 print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(labels, predicted)))
