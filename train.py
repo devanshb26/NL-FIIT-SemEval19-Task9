@@ -48,19 +48,20 @@ valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y
 import pandas as pd
 import csv
 # print(test_set.data)
-# df_train=pd.DataFrame(train_set)
-# df_test=pd.DataFrame(test_set)
-# df_valid=pd.DataFrame(valid_set)
-# df_train.to_csv('checkpoints/train.csv')
-# df_test.to_csv('checkpoints/test.csv')
-# df_valid.to_csv('checkpoints/valid.csv')
+df_train=pd.DataFrame({'data':train_set.data,'labels':train_set.labels})
+df_test=pd.DataFrame({'data':test_set.data,'labels':test_set.labels})
+df_valid=pd.DataFrame({'data':valid_set.data,'labels':valid_set.labels})
+print(df_train.head())
+df_train.to_csv('checkpoints/train.csv')
+df_test.to_csv('checkpoints/test.csv')
+df_valid.to_csv('checkpoints/valid.csv')
 train_loader = DataLoader(train_set,batch_size,shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
 valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
-print(test_loader.data)
+
 embeddings = ELMo(**embed_params)
 model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
 
