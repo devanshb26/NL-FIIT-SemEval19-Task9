@@ -47,7 +47,7 @@ valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y
 # sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
 import pandas as pd
 import csv
-print(test_set.data)
+# print(test_set.data)
 # df_train=pd.DataFrame(train_set)
 # df_test=pd.DataFrame(test_set)
 # df_valid=pd.DataFrame(valid_set)
@@ -60,7 +60,7 @@ test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
 valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
-print(test_loader)
+print(test_loader.data)
 embeddings = ELMo(**embed_params)
 model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
 
