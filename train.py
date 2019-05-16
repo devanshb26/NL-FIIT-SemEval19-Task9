@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from config import device, batch_size,save_models, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,ensemble_models
-
+from sampler import ImbalancedDatasetSampler
 from sklearn.metrics import accuracy_score, f1_score
 
 from models.rnn_classifier import RNNClassifier
@@ -26,7 +26,7 @@ test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column],
 test_set_B = ClassificationDataset(test_data_B[:, x_column], test_data_B[:, y_column], preprocessing=preprocessing.process_text)
 valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
-train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
+train_loader = DataLoader(train_set, sampler=ImbalancedDatasetSampler(train_set),batch_size, shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
