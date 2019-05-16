@@ -60,7 +60,7 @@ test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
 valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
-
+print(test_loader)
 embeddings = ELMo(**embed_params)
 model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
 
