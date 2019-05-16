@@ -46,7 +46,7 @@ weights = make_weights_for_balanced_classes(train_set, 2)
 weights = torch.DoubleTensor(weights)                                       
 sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
 
-train_loader = DataLoader(train_set,batch_size,sampler = sampler, shuffle=False, collate_fn=collate_fn_cf)
+train_loader = DataLoader(train_set,batch_size,sampler = sampler, num_workers=args.workers, pin_memory=True,shuffle=False, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
