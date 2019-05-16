@@ -2,11 +2,10 @@ import torch
 from torch.utils.data import DataLoader
 import numpy as np
 
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score,confusion_matrix as cm
 from modules.layers.embeddings.elmo import ELMo
-from models.rnn_classifier import RNNClassifier
-# from config import device, batch_size, encoder_params, data_params, ensemble_models
 from config import device, ensemble_models,batch_size, model_params, embed_params, encoder_params, transformer_encoder_params, data_params, training_params, paths,save_csv,save_csv_B
+from models.rnn_classifier import RNNClassifier
 from modules.common.preprocessing import Preprocessing
 from modules.common.utils import class_weigths
 from modules.common.dataloading import load_data, collate_fn_cf
@@ -18,27 +17,32 @@ from utils.submit import save_predictions, save_predictions_with_probabilities
 print('Loading dataset...')
 preprocessing = Preprocessing()
 
-train_data, valid_data, test_data,test_data_B,valid_data_B = load_data(**data_params)
+train_data, valid_data,valid_B, test_data,test_data_B = load_data(**data_params)
 x_column, y_column = data_params['x_column'], data_params['y_column']
 
 train_set = ClassificationDataset(train_data[:, x_column], train_data[:, y_column], preprocessing=preprocessing.process_text)
 valid_set = ClassificationDataset(valid_data[:, x_column], valid_data[:, y_column], preprocessing=preprocessing.process_text)
+valid_set_B = ClassificationDataset(valid_B[:, x_column], valid_B[:, y_column], preprocessing=preprocessing.process_text)
 test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column], preprocessing=preprocessing.process_text)
+test_set_B = ClassificationDataset(test_data_B[:, x_column], test_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
 train_loader = DataLoader(train_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
-valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
+valid_loader = DataLoader(valid_set, batch_size, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
+test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
+valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 
 print('Creating model...')
 weights = class_weigths(train_set.labels).to(device)
 criterion = torch.nn.CrossEntropyLoss(weight=weights)
 embeddings = ELMo(**embed_params)
 model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
+
 optimizer = torch.optim.Adam(model.parameters())
+
 trainer = ClassificationTrainer(None, criterion, optimizer, device)
 
 print('Evaluate...')
-
 gold_labels = test_set.labels.astype(int)
 predictions = []
 losses = []
