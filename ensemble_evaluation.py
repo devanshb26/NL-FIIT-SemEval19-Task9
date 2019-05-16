@@ -39,7 +39,7 @@ trainer = ClassificationTrainer(None, criterion, optimizer, device)
 
 print('Evaluate...')
 
-gold_labels = data.test_set.labels.astype(int)
+gold_labels = test_set.labels.astype(int)
 predictions = []
 losses = []
 
