@@ -116,12 +116,12 @@ save_csv_B = [
 ]
 
 ensemble_models = [
-#     'run_1',
-#     'run_2',
-#     'run_3',
-#     'run_4',
+    'run_11',
+    'run_10',
+    'run_15',
+    'run_18',
 #     'run_5',
-    'run_6',
+#     'run_6',
 #     'run_7',
     'run_8'
 #     'run_9',
