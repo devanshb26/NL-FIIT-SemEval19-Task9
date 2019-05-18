@@ -62,7 +62,7 @@ sum_predictions = np.stack(predictions).sum(axis=0)
 predicted = np.argmax(sum_predictions, 1)
 save_predictions(name='submissions/ensemble', predictions=predicted, original_data=test_data)
 save_predictions_with_probabilities(name='submissions/ensemble_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
-
+print(cm(gold_labels,predicted))
 print('----------------------------------------------------Test results----------------------------------------------------')
 print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
 print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='macro'), precision_score(gold_labels, predicted, average='micro')))
