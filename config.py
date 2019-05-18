@@ -121,9 +121,9 @@ ensemble_models = [
 #    'run_15',
 #     'run_18',
 #     'run_5',
-#     'run_6',
+    'run_6'
 #     'run_7',
-    'run_8'
+#     'run_8'
 #     'run_9',
 #     'run_10',
 #     'run_11',
