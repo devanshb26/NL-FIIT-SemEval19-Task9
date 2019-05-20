@@ -13,7 +13,7 @@ class Preprocessing(object):
     """
 
     def __init__(self, **kwargs):
-        self.char_clean = kwargs.get('char_cleaning', False)
+        self.char_clean = kwargs.get('char_cleaning', True)
         self.char_normalize = kwargs.get('char_normalize', False)
         self.word_normalize = kwargs.get('word_normalization', False)
         self.expand = kwargs.get('expand', False)
