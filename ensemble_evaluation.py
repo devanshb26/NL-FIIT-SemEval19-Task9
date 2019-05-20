@@ -46,7 +46,7 @@ print('Evaluate...')
 gold_labels = test_set.labels.astype(int)
 predictions = []
 losses = []
-
+import pandas as pd
 for model_name in ensemble_models:
     trainer.model = torch.load('checkpoints/' + model_name)
 
@@ -63,7 +63,9 @@ predicted = np.argmax(sum_predictions, 1)
 save_predictions(name='submissions/ensemble', predictions=predicted, original_data=test_data)
 save_predictions_with_probabilities(name='submissions/ensemble_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
 print(cm(gold_labels,predicted))
-print('----------------------------------------------------Test results----------------------------------------------------')
+df=pd.DataFrame({'reviews':test_data[ : ,1],'predictions':predicted,'labels':gold_labels}) 
+    df.to_csv(save_csv[0])
+print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
 print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
 print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='binary'), precision_score(gold_labels, predicted, average='micro')))
 print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels, predicted, average='binary'), recall_score(gold_labels, predicted, average='micro')))
@@ -81,9 +83,84 @@ predicted = np.argmax(leaderboard, axis=1)
 save_predictions(name='submissions/ensemble_voting', predictions=predicted, original_data=test_data)
 save_predictions_with_probabilities(name='submissions/ensemble_voting_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
 print(cm(gold_labels,predicted))
-print('----------------------------------------------------Test results----------------------------------------------------')
+df=pd.DataFrame({'reviews':test_data[ : ,1],'predictions':predicted,'labels':gold_labels}) 
+    df.to_csv(save_csv[1])
+print('----------------------------------------------------Test results/SubtaskA----------------------------------------------------')
 print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
 print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels, predicted, average='binary'), precision_score(gold_labels, predicted, average='micro')))
 print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels, predicted, average='binary'), recall_score(gold_labels, predicted, average='micro')))
 print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(gold_labels, predicted)))
 print('--------------------------------------------------------------------------------------------------------------------')
+
+
+gold_labels = test_set_B.labels.astype(int)
+predictions = []
+losses = []
+
+for model_name in ensemble_models:
+    trainer.model = torch.load('checkpoints/' + model_name)
+
+    test_loss, predicted, model_predictions, labels = trainer.evaluate_model(test_loader_B)
+    predictions.append(model_predictions)
+    losses.append(test_loss)
+    save_predictions(name='submissions/' + model_name, predictions=predicted, original_data=test_data)
+    save_predictions_with_probabilities(name='submissions/' + model_name + '_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=model_predictions)
+print('Sum ensemble')
+
+sum_predictions = np.stack(predictions).sum(axis=0)
+predicted = np.argmax(sum_predictions, 1)
+save_predictions(name='submissions/ensemble', predictions=predicted, original_data=test_data)
+save_predictions_with_probabilities(name='submissions/ensemble_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
+print(cm(gold_labels,predicted))
+df=pd.DataFrame({'reviews':test_data_B[ : ,1],'predictions':predicted,'labels':gold_labels}) 
+    df.to_csv(save_csv_B[0])
+print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
+print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
+print('| Macro Precision: {} | Precision: {} |'.format(precision_score(gold_labels, predicted, average='binary'), precision_score(gold_labels, predicted, average='micro')))
+print('| Macro Recall: {} | Recall: {} |'.format(recall_score(gold_labels, predicted, average='binary'), recall_score(gold_labels, predicted, average='micro')))
+print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(gold_labels, predicted)))
+print('--------------------------------------------------------------------------------------------------------------------')
+
+print('Voting ensemble')
+
+leaderboard = np.zeros(predictions[0].shape)
+for index, prediction in enumerate(predictions):
+    for j in range(prediction.shape[0]):
+        leaderboard[j][prediction[j].argmax()] += 1
+
+predicted = np.argmax(leaderboard, axis=1)
+save_predictions(name='submissions/ensemble_voting', predictions=predicted, original_data=test_data)
+save_predictions_with_probabilities(name='submissions/ensemble_voting_full', predictions=predicted, original_data=test_data, labels=gold_labels, probabilities=sum_predictions)
+print(cm(gold_labels,predicted))
+df=pd.DataFrame({'reviews':test_data_B[ : ,1],'predictions':predicted,'labels':gold_labels}) 
+    df.to_csv(save_csv_B[1])
+print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
+print('| Loss: {} | Acc: {}% |'.format(test_loss, accuracy_score(labels, predicted)))
+print('| Macro Precision: {} | Precision: {} |'.format(precision_score(gold_labels, predicted, average='binary'), precision_score(gold_labels, predicted, average='micro')))
+print('| Macro Recall: {} | Recall: {} |'.format(recall_score(gold_labels, predicted, average='binary'), recall_score(gold_labels, predicted, average='micro')))
+print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels, predicted, average='macro'), f1_score(gold_labels, predicted, average='micro'), f1_score(gold_labels, predicted)))
+print('--------------------------------------------------------------------------------------------------------------------')
+
+# gold_labels_B = test_set_B.labels.astype(int)
+# print(gold_labels_B)
+# i=0
+# for model_name in ensemble_models:
+#     trainer.model = torch.load('checkpoints/' + model_name)
+
+#     test_loss_B, predicted_B, model_predictions_B, labels_B = trainer.evaluate_model(test_loader_B)
+# #     df=pd.DataFrame({'predictions':predicted,'labels':labels})
+#     df=pd.DataFrame({'reviews':test_data_B[ : ,1],'predictions':predicted_B,'labels':labels_B}) 
+#     df.to_csv(save_csv_B[i])
+#     i=i+1
+#     print(f1_score(gold_labels_B, predicted_B))
+#     print(cm(labels_B,predicted_B))
+#     print('----------------------------------------------------Test results/SubtaskB----------------------------------------------------')
+#     print(model_name)
+#     print('| Loss: {} | Acc: {}% |'.format(test_loss_B, accuracy_score(labels_B, predicted_B)))
+#     print('| Macro Precision: {} | Micro Precision: {} |'.format(precision_score(gold_labels_B, predicted_B, average='macro'), precision_score(gold_labels_B, predicted_B, average='micro')))
+#     print('| Macro Recall: {} | Micro Recall: {} |'.format(recall_score(gold_labels_B, predicted_B, average='macro'), recall_score(gold_labels_B, predicted_B, average='micro')))
+#     print('| Macro F1: {} | Micro F1: {} | Binary F1: {} |'.format(f1_score(gold_labels_B, predicted_B, average='macro'), f1_score(gold_labels_B, predicted_B, average='micro'), f1_score(gold_labels_B, predicted_B)))
+#     print('--------------------------------------------------------------------------------------------------------------------')
+#     #save_predictions(name='submissions/' + model_name + 'predictions', predictions=predicted_B)
+#     save_predictions(name='submissions/' + model_name +'_B', predictions=predicted_B, original_data=test_data_B)
+#     save_predictions_with_probabilities(name='submissions/' + model_name + '_full_B', predictions=predicted_B, original_data=test_data_B, labels=labels_B, probabilities=model_predictions_B)
