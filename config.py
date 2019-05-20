@@ -78,52 +78,52 @@ save_models = [
 ]
 
 save_csv = [
-    'checkpoints/bestlp.csv',
-    'run_1',
-    'run_2',
-    'run_3',
-    'run_4',
-    'run_5',
-    'run_6',
-    'run_7',
-    'run_8',
-    'run_9',
-    'run_10',
-    'checkpoints/run_11lp.csv',
-    'run_12',
-    'checkpoints/run_13lp.csv',
-    'checkpoints/run_14lp.csv'
+    'checkpoints/ensemble_A.csv',
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8',
+#     'run_9',
+#     'run_10',
+    'checkpoints/voting_A.csv'
+#     'run_12',
+#     'checkpoints/run_13lp.csv',
+#     'checkpoints/run_14lp.csv'
     
 ]
 
 save_csv_B = [
-    'checkpoints/bestlp_B.csv',
-    'run_1',
-    'run_2',
-    'run_3',
-    'run_4',
-    'run_5',
-    'run_6',
-    'run_7',
-    'run_8',
-    'run_9',
-    'run_10',
-    'checkpoints/run_11lp_B.csv',
-    'run_12',
-    'checkpoints/run_13lp_B.csv',
-    'checkpoints/run_14lp_B.csv'
+    'checkpoints/ensemble_B.csv',
+#     'run_1',
+#     'run_2',
+#     'run_3',
+#     'run_4',
+#     'run_5',
+#     'run_6',
+#     'run_7',
+#     'run_8',
+#     'run_9',
+#     'run_10',
+#     'checkpoints/run_11lp_B.csv',
+#     'run_12',
+#     'checkpoints/run_13lp_B.csv',
+    'checkpoints/voting_B.csv'
     
 ]
 
 ensemble_models = [
-    'run_11',
+#     'run_11',
 #     'run_10',
 #    'run_15',
 #     'run_18',
 #     'run_5',
-    'run_6'
+    'run_6',
 #     'run_7',
-#     'run_8'
+    'run_8'
 #     'run_9',
 #     'run_10',
 #     'run_11',
