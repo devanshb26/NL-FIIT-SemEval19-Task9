@@ -33,6 +33,7 @@ class Preprocessing(object):
         text = ' '.join([t.text for t in tokens])
 
         if self.char_clean:
+            print('yes_clean')
             text = self.char_cleaning(text)
         if self.char_normalize:
             text = self.char_normalization(text)
