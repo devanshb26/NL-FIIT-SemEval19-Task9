@@ -14,11 +14,11 @@ class Preprocessing(object):
 
     def __init__(self, **kwargs):
         self.char_clean = kwargs.get('char_cleaning', True)
-        self.char_normalize = kwargs.get('char_normalize', False)
-        self.word_normalize = kwargs.get('word_normalization', False)
-        self.expand = kwargs.get('expand', False)
-        self.escape_punctuation = kwargs.get('escape_punctuation', False)
-        self.negation = kwargs.get('negation', False)
+        self.char_normalize = kwargs.get('char_normalize', True)
+        self.word_normalize = kwargs.get('word_normalization', True)
+        self.expand = kwargs.get('expand', True)
+        self.escape_punctuation = kwargs.get('escape_punctuation', True)
+        self.negation = kwargs.get('negation', True)
 
     def split_text(self, text):
         return text.split()
@@ -33,7 +33,7 @@ class Preprocessing(object):
         text = ' '.join([t.text for t in tokens])
 
         if self.char_clean:
-            print('yes_clean')
+#             print('yes_clean')
             text = self.char_cleaning(text)
         if self.char_normalize:
             text = self.char_normalization(text)
