@@ -20,14 +20,14 @@ data_params = {
 batch_size = 32
 
 embed_params = {
-    'embedding_dropout': 0.6
+    'embedding_dropout': 0.5
 }
 
 encoder_params = {
     'hidden_size': 512,
     'num_layers': 2,
     'bidirectional': True,
-    'dropout': 0.6,
+    'dropout': 0.3,
     'batch_size': batch_size
 }
 
@@ -122,12 +122,12 @@ ensemble_models = [
 #     'run_18',
     'run_5',
 #     'run_6',
-    'run_7',
-#     'run_8'
-#     'run_9'
-   'run_10'
+#     'run_7',
+# #     'run_8'
+# #     'run_9'
+   'run_10',
 #     'run_11'
-#     'run_12'
+    'run_12'
 #     'run_13'
 #     'run_15'
 #     'run_14'
