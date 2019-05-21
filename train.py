@@ -15,18 +15,18 @@ from modules.trainers import ClassificationTrainer
 from modules.datasets.classification_dataset import ClassificationDataset
 
 
-def make_weights_for_balanced_classes(images, nclasses):                        
-    count = [0] * nclasses                                                      
-    for item in images:                                                         
-        count[item[1]] += 1                                                     
-    weight_per_class = [0.] * nclasses                                      
-    N = float(sum(count))                                                   
-    for i in range(nclasses):                                                   
-        weight_per_class[i] = N/float(count[i])                                 
-    weight = [0] * len(images)                                              
-    for idx, val in enumerate(images):                                          
-        weight[idx] = weight_per_class[val[1]]                                  
-    return weight         
+# def make_weights_for_balanced_classes(images, nclasses):                        
+#     count = [0] * nclasses                                                      
+#     for item in images:                                                         
+#         count[item[1]] += 1                                                     
+#     weight_per_class = [0.] * nclasses                                      
+#     N = float(sum(count))                                                   
+#     for i in range(nclasses):                                                   
+#         weight_per_class[i] = N/float(count[i])                                 
+#     weight = [0] * len(images)                                              
+#     for idx, val in enumerate(images):                                          
+#         weight[idx] = weight_per_class[val[1]]                                  
+#     return weight         
 
 
 
@@ -42,9 +42,9 @@ test_set = ClassificationDataset(test_data[:, x_column], test_data[:, y_column],
 test_set_B = ClassificationDataset(test_data_B[:, x_column], test_data_B[:, y_column], preprocessing=preprocessing.process_text)
 valid_set_B = ClassificationDataset(valid_data_B[:, x_column], valid_data_B[:, y_column], preprocessing=preprocessing.process_text)
 
-weights = make_weights_for_balanced_classes(train_set, 2)
-weights = torch.DoubleTensor(weights)                                       
-sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
+# weights = make_weights_for_balanced_classes(train_set, 2)
+# weights = torch.DoubleTensor(weights)                                       
+# sampler = torch.utils.data.sampler.WeightedRandomSampler(weights, len(weights))
 import pandas as pd
 import csv
 # print(test_set.data)
@@ -55,7 +55,7 @@ print(df_train.head())
 df_train.to_csv('checkpoints/train.csv')
 df_test.to_csv('checkpoints/test.csv')
 df_valid.to_csv('checkpoints/valid.csv')
-train_loader = DataLoader(train_set,batch_size,sampler=sampler,shuffle=False, collate_fn=collate_fn_cf)
+train_loader = DataLoader(train_set,batch_size,shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
 test_loader_B = DataLoader(test_set_B, batch_size, collate_fn=collate_fn_cf)
