@@ -20,12 +20,12 @@ data_params = {
 batch_size = 32
 
 embed_params = {
-    'embedding_dropout': 0.5
+    'embedding_dropout': 0.6
 }
 
 encoder_params = {
-    'hidden_size': 1024,
-    'num_layers': 1,
+    'hidden_size': 512,
+    'num_layers': 2,
     'bidirectional': True,
     'dropout': 0.6,
     'batch_size': batch_size
