@@ -5,7 +5,7 @@ from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
 # TODO - only LSTM add support for type GRU
 class RNNEncoder(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers=5, bidirectional=True, dropout=0.3, type='LSTM', **kwargs):
+    def __init__(self, input_size, hidden_size, num_layers=1, bidirectional=True, dropout=0.3, type='LSTM', **kwargs):
         """
             RNN encoder layer.
             Args:
