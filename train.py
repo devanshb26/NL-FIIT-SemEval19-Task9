@@ -63,7 +63,7 @@ valid_loader_B = DataLoader(valid_set_B, batch_size, collate_fn=collate_fn_cf)
 print('Creating model...')
 
 embeddings = ELMo(**embed_params)
-model = RNNClassifier(embeddings, encoder_params, **model_params).to(device)
+model = RNNClassifier(embeddings, transformer_encoder_params, **model_params).to(device)
 
 optimizer = torch.optim.Adam(model.parameters())
 
