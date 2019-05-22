@@ -24,10 +24,10 @@ embed_params = {
 }
 
 encoder_params = {
-    'hidden_size': 1024,
+    'hidden_size': 512,
     'num_layers': 1,
     'bidirectional': False,
-    #'dropout': 0.6,
+    'dropout': 0,
     'batch_size': batch_size
 }
 
