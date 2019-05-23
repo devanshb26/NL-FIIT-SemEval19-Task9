@@ -17,7 +17,7 @@ data_params = {
     'header': None
 }
 
-batch_size = 32
+batch_size = 64
 
 embed_params = {
     'embedding_dropout': 0.5
