@@ -49,9 +49,9 @@ import pandas as pd
 import csv
 print(" ".join(test_set.data[0]))
 df_train=pd.DataFrame({'data':train_set.data,'labels':train_set.labels})
-df_test=pd.DataFrame({'data':test_set.data,'labels':test_set.labels})
+df_test=pd.DataFrame({'data':(" ".join(test_set.data[i])for i in len(test_set.data)),'labels':test_set.labels})
 df_valid=pd.DataFrame({'data':valid_set.data,'labels':valid_set.labels})
-print(df_train.head())
+print(df_test.head())
 df_train.to_csv('checkpoints/train.csv')
 df_test.to_csv('checkpoints/test.csv')
 df_valid.to_csv('checkpoints/valid.csv')
