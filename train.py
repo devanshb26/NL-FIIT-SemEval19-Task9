@@ -51,18 +51,32 @@ import csv
 p=[]
 for i in range(len(test_set.data)):
     p.append(" ".join(test_set.data[i]))
+    
+q=[]
+for i in range(len(train_set.data)):
+    q.append(" ".join(train_set.data[i]))
+r=[]
+for i in range(len(test_set_B.data)):
+    r.append(" ".join(test_set_B.data[i]))
+s=[]
+for i in range(len(valid_set.data)):
+    s.append(" ".join(valid_set.data[i]))
+    
+t=[]
+for i in range(len(valid_set_B.data)):
+    t.append(" ".join(valid_set_B.data[i]))
 print(" ".join(test_set.data[0]))
-df_train=pd.DataFrame({'data':train_set.data,'labels':train_set.labels})
+df_train=pd.DataFrame({'data':q,'labels':train_set.labels})
 df_test=pd.DataFrame({'data':p,'labels':test_set.labels})
-df_valid=pd.DataFrame({'data':valid_set.data,'labels':valid_set.labels})
+df_valid=pd.DataFrame({'data':s,'labels':valid_set.labels})
 print(df_test.head())
 df_train.to_csv('checkpoints/train.csv')
 df_test.to_csv('checkpoints/test.csv')
 df_valid.to_csv('checkpoints/valid.csv')
 
 #df_train=pd.DataFrame({'data':train_set.data,'labels':train_set.labels})
-df_test_B=pd.DataFrame({'data':test_set_B.data,'labels':test_set_B.labels})
-df_valid=pd.DataFrame({'data':valid_set_B.data,'labels':valid_set_B.labels})
+df_test_B=pd.DataFrame({'data':r,'labels':test_set_B.labels})
+df_valid=pd.DataFrame({'data':t,'labels':valid_set_B.labels})
 #print(df_train.head())
 #df_train.to_csv('checkpoints/train.csv')
 df_test.to_csv('checkpoints/test_B.csv')
