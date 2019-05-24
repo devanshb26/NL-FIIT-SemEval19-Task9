@@ -79,7 +79,7 @@ df_test_B=pd.DataFrame({'data':r,'labels':test_set_B.labels})
 df_valid_B=pd.DataFrame({'data':t,'labels':valid_set_B.labels})
 #print(df_train.head())
 #df_train.to_csv('checkpoints/train.csv')
-df_test.to_csv('checkpoints/test_B.csv')
+df_test_B.to_csv('checkpoints/test_B.csv')
 df_valid_B.to_csv('checkpoints/valid_B.csv')
 
 
