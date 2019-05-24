@@ -55,6 +55,16 @@ print(df_train.head())
 df_train.to_csv('checkpoints/train.csv')
 df_test.to_csv('checkpoints/test.csv')
 df_valid.to_csv('checkpoints/valid.csv')
+
+#df_train=pd.DataFrame({'data':train_set.data,'labels':train_set.labels})
+df_test_B=pd.DataFrame({'data':test_set_B.data,'labels':test_set_B.labels})
+df_valid=pd.DataFrame({'data':valid_set_B.data,'labels':valid_set_B.labels})
+#print(df_train.head())
+#df_train.to_csv('checkpoints/train.csv')
+df_test.to_csv('checkpoints/test_B.csv')
+df_valid.to_csv('checkpoints/valid_B.csv')
+
+
 train_loader = DataLoader(train_set,batch_size,shuffle=True, collate_fn=collate_fn_cf)
 valid_loader = DataLoader(valid_set, batch_size, shuffle=True, collate_fn=collate_fn_cf)
 test_loader = DataLoader(test_set, batch_size, collate_fn=collate_fn_cf)
