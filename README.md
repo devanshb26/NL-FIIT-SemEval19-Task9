@@ -20,10 +20,11 @@ The repository contains source code of the models submitted by NL-FIIT team as a
 
 
 # Running commands
-
+Install allennlp before running the train command
+! pip3 install --ignore-installed allennlp
 ## Train model
 ```
-python3 main.py
+python3 train.py
 ```
 
 ## Evaluate model
